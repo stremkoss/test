@@ -33,5 +33,6 @@ left join oc_product_description as pr_d on oc_product.product_id = pr_d.product
 
         return $product_arr;
     }
+
 }
 

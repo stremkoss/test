@@ -62,10 +62,12 @@ class MainController
 
             $Controller = new $ControllerName;
 
+            $Controller->SetParams($segments);
 
             if (method_exists($Controller, $ActionName)) {
 
                 $Controller->$ActionName();
+
 
             }
 
