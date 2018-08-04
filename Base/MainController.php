@@ -35,14 +35,13 @@ class MainController
     {
         $uri = $this->getUri();
 
-        @list($uri, $params) = explode('?', $uri);
 
 
         $segments = explode('/', $uri);
 
         $ControllerName = ucfirst($segments[0]) . 'Controller';
 
-        @$ActionName = 'action' . ucfirst($segments[1]);
+        $ActionName = 'action' . ucfirst($segments[1]);
 
         $FileController = Root . '/controllers/' . $ControllerName . ".php";
 
@@ -74,7 +73,7 @@ class MainController
 
         }
     }
-    public   function SetParams(array $params )
+    public   function SetParams(array $params)
     {
 
         $this->params = $params;

@@ -1,10 +1,10 @@
 <?php
-
+use Base\MainController;
 class OpencartController  extends Base\MainController {
 
-    public function actionCreateProduct(array $array) {
+    public function actionCreateProduct() {
 
-      print_r($array);
+      print_r(1);
     }
     
 }
