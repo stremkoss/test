@@ -1,8 +1,8 @@
 <?php
-namespace Model;
+namespace Base;
 use PDO;
 use \Base\Database;
-class  Model   {
+class  Modesl  extends Database{
 
 
     public $description;

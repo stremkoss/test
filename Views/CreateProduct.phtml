@@ -16,7 +16,7 @@
         padding-top: 10%;
     }
 </style>
-<script type="text/javascript" src="\javascript\My.js"></script>
+
 
   <center>
       <br>
@@ -26,6 +26,7 @@
       Hellow this page use for creating product<br>
       Please Create Product or leave this page<br>
   </center>
+
 <body>
 <!-- Button trigger modal -->
  <center>
@@ -35,6 +36,8 @@
  </center>
 
 <!-- Modal -->
+
+
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -73,33 +76,37 @@
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id = "Create" class="btn btn-primary">Create</button>
+                <button type="submit"  id="send"  class="btn btn-primary">Create</button>
             </div>
         </div>
             </div>
         </div>
     </div>
 </div>
+
 </body>
+
 <script>
-    $(document).ready(function () {
-        $("#Create").click(function () {
+         $(document).ready(function () {
+            $('#send').click( function () {
+                $.ajax({
+                    url: '/opencart/CreateProduct',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        prd_desc: document.getElementById('prd-desc').value,
+                        prd_name: document.getElementById('prd-name').value,
+                        prd_price: document.getElementById('prd-price').value,
+                        prd_weight: document.getElementById('prd-weight').value
 
-            $.ajax({
-                url: 'Opencart/CreateProduct',
-                type: 'post',
-                dataType: 'json',
-                data: {
-                    prd_desc: document.getElementById('prd-desc').value,
-                    prd_name: document.getElementById('prd-name').value,
-                    prd_price: document.getElementById('prd-price').value,
-                    prd_weight: document.getElementById('prd-weight').value
+                    },
+                    success: function(data) {
 
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            })
-        })
-    })
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
 </script>

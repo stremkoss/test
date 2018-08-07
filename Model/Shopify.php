@@ -2,9 +2,9 @@
 namespace Model;
 use PDO;
 use \Base\Database;
-use Model\Model;
+use \Base\Modesl;
 
-class Shopify  extends Model {
+class Shopify  extends Database {
 
 
 
@@ -15,7 +15,7 @@ class Shopify  extends Model {
 
            foreach ($params as $key => $value) {
 
-               $model = new Model();
+               $model = new Base\Model();
 
                $model->setPrice($params['price']);
                $model->setWeight($params['weight']);

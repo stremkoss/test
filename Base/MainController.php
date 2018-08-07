@@ -1,5 +1,6 @@
 <?php
 namespace Base;
+use Base\View;
 /**
  * Created by PhpStorm.
  * User: ura
@@ -52,7 +53,7 @@ class MainController
             include_once($FileController);
         }
 
-        $ViewName = strtolower($segments[0]);
+        $ViewName = $segments[1];
 
         @$MethodAction = 'action' . ucfirst($segments[1]);
 
@@ -64,13 +65,13 @@ class MainController
             $Controller->SetParams($segments);
 
             if (method_exists($Controller, $ActionName)) {
+//
+//                $this->view->render($ViewName);
 
                 $Controller->$ActionName();
-
-
             }
-
-
+        } else {
+            echo "<div style='color: red'>No such controller</div>";
         }
     }
     public   function SetParams(array $params)

@@ -5,12 +5,10 @@ error_reporting(E_ALL);
 ini_set('display_startup_errors', 1);
 ini_set('display_errors',1);
 
-
-require_once ('Base/Conn.php');
-require_once ('Model/Opencart.php');
-require_once('Model/Model.php');
-require_once ('Model/Shopify.php');
 require_once ('Autoloader.php');
+require_once ('Base/Conn.php');
+
+
 
 define('ROOT_DIR' , __FILE__, true);
 define('Root' , dirname(__FILE__));
