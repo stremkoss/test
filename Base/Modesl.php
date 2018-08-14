@@ -13,8 +13,54 @@ class  Modesl  extends Database{
     public $quantity;
     public $date_added;
     public $properies;
+    public $password1;
+    public $password;
+    public $nameUs;
+    public $email;
+    public $parrams;
+
+    public function setParams($parrams) {
+
+        $this->parrams =$parrams;
+    }
+
+    public function getParamss($parrams) {
+
+       return $this->parrams;
+    }
 
 
+   public function setUserName($nameUs) {
+
+       $this->nameUs = $nameUs;
+   }
+   public function getUserName(){
+       return $this->nameUs;
+   }
+
+   public function setEmail($email) {
+       $this->email = $email;
+   }
+
+   public function getEmail() {
+       return $this->email;
+   }
+
+
+   public function setPassword($password) {
+       $this->password = $password;
+   }
+   public function getPassword() {
+       return $this->password;
+   }
+
+   public function setPassword_sec($password1) {
+       $this->password1 = $password1;
+   }
+
+   public function getPassword_sec() {
+       return $this->password1;
+   }
 
     public function setDesc($description){
         $this->description = $description;
@@ -29,7 +75,7 @@ class  Modesl  extends Database{
     public function getDesc(){
         return $this->description;
     }
-    public function setNmae($name){
+    public function setName($name){
         $this->name =$name;
     }
     public function getName(){
@@ -62,12 +108,5 @@ class  Modesl  extends Database{
     public function getPar() {
         return $this->par;
     }
-
-
-
-
-
-
-
 
 }

@@ -42,7 +42,7 @@ class MainController
 
         $ControllerName = ucfirst($segments[0]) . 'Controller';
 
-        $ActionName = 'action' . ucfirst($segments[1]);
+        @$ActionName = 'action' . ucfirst($segments[1]);
 
         $FileController = Root . '/controllers/' . $ControllerName . ".php";
 
@@ -53,7 +53,7 @@ class MainController
             include_once($FileController);
         }
 
-        $ViewName = $segments[1];
+        @$ViewName = $segments[1];
 
         @$MethodAction = 'action' . ucfirst($segments[1]);
 
@@ -71,7 +71,8 @@ class MainController
                 $Controller->$ActionName();
             }
         } else {
-            echo "<div style='color: red'>No such controller</div>";
+
+            echo "<center><h1><div style='color: Black'>No such controller</div></h1></center>";
         }
     }
     public   function SetParams(array $params)
@@ -87,4 +88,14 @@ class MainController
 
         return array_merge($_POST,$this->params);
     }
+
+    public  function Error404() {
+
+        http_response_code(404);
+
+
+        die();
+
+    }
+
 }

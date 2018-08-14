@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -49,19 +49,19 @@
             </div>
             <div class="modal-body">
                 <label for="prd-desc">Product Description</label>
-                <input type="text" class="form-control" id="prd-desc" aria-describedby="emailHelp" placeholder="Enter Product Description">
+                <input type="text" class="form-control" id="prd-desc" aria-describedby="emailHelp" placeholder="Enter Product Description" required>
             </div>
             <div class="modal-body">
                 <label for="prd-name">Product Name</label>
-                <input type="text" class="form-control" id="prd-name" aria-describedby="emailHelp" placeholder="Enter Product Name">
+                <input type="text" class="form-control" id="prd-name" aria-describedby="emailHelp" placeholder="Enter Product Name" required>
             </div>
             <div class="modal-body">
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" >
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
                     </div>
                     <lable for="prd-price"></lable>
-                    <input type="text" class="form-control" id="prd-price" aria-label="Amount (to the nearest dollar)" placeholder="Enter Product Price">
+                    <input type="text" class="form-control" id="prd-price" aria-label="Amount (to the nearest dollar)" placeholder="Enter Product Price" required>
                     <div class="input-group-append">
                         <span class="input-group-text">.00</span>
                     </div>
@@ -69,10 +69,11 @@
                 <div class="modal-body">
                     <div class="input-group mb-3">
                         <lable for="prd-weight"></lable>
-                        <input type="text" class="form-control" id="prd-weight" aria-describedby="text" placeholder="Enter Product Weight">
+                        <input type="text" class="form-control" id="prd-weight" aria-describedby="text" placeholder="Enter Product Weight" required>
                         <div class="input-group-append">
                             <span class="input-group-text">.00</span>
                         </div>
+                    </div>
                 </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,14 +99,21 @@
                         prd_name: document.getElementById('prd-name').value,
                         prd_price: document.getElementById('prd-price').value,
                         prd_weight: document.getElementById('prd-weight').value
-
                     },
-                    success: function(data) {
+                    success: function (datad) {
+
+                      if(datad.errors == false) {
+
+                          $('#myModal').modal('hide');
+
+                          location.href = 'http://test1.com/opencart' + datad.href;
+
+                      }
 
                     },
                     error: function (error) {
                         console.log(error);
-                    }
+                    },
                 });
             });
         });
