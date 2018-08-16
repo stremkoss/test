@@ -85,12 +85,17 @@
                     error : function (errror) {
 
                     },
-                    success: function(data) {
-                        var Error = false;
-                        if(data.error == Error){
+                    success: function(date) {
 
-                         location.href = 'http://test1.com/admin/'+data.href
+                        if(date.error == true){
+
+                            alert(date.message);
+                            alert('Please enter corect email or UserName')
                         }
+
+                            location.href = 'http://test1.com/admin/'+date.href
+
+
                     }
                 });
             });

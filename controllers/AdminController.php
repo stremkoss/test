@@ -20,11 +20,6 @@ class AdminController extends Base\MainController {
             $whoIsthat->setPassword_sec($_POST['password_ret']);
             $MakeMe = $whoIsthat->EntityConfirm();
 
-         if($MakeMe == true) {
-
-          $MakeMe = ['error' => false,'href'=> 'login'];
-          echo json_encode($MakeMe);
-         }
 
         }
 
@@ -33,7 +28,10 @@ class AdminController extends Base\MainController {
 
     public function actionLogin(){
 
+     if($_POST) {
 
+         return 1;
+     }
 
         $this->view->render('Login');
 

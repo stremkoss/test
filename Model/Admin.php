@@ -1,6 +1,7 @@
 <?php
 namespace Model;
 use Base\Modesl;
+use Squareup\Exception;
 
 /**
  * Created by PhpStorm.
@@ -45,16 +46,16 @@ class Admin extends \Base\Modesl {
 
     public function EntityConfirm() {
 
-        if (strlen ($this->getPassword()) >= 6
+        if (strlen ($this->getPassword()) >= 1
 
-            && strlen ($this->getPassword_sec()) >= 6) {
+            && strlen ($this->getPassword_sec()) >= 1) {
 
             $this->CheckEmail($this->getEmail());
 
+          $CheckUser= $this->IsAlready();
+            $IsCreate = $this->CreateUser();
 
-//          $IsCreate = $this->CreateUser();
-
-          return true;
+            return true;
         }
 
         return false;
@@ -91,23 +92,30 @@ class Admin extends \Base\Modesl {
 
     public function IsAlready() {
 
+    $email = $this->getEmail();
+
      $query = self::_conect('Admin');
 
-     $sql = "select Email_s,user_name from Admin.Users";
+     $sql = "SELECT Email_s FROM Users
+
+    WHERE Email_s =   " . "'$email'" ;
+
+
 
      $getThem = $query->prepare($sql);
 
-      $getThem->execute();
+     $getThem->execute(array($email));
 
-     while ($res = $getThem->fetchAll(\PDO::FETCH_ASSOC)){
+     $result = $getThem->fetch(\PDO::FETCH_COLUMN);
 
-         $array [] = $res;
+     if($result == true) {
 
+         echo json_encode(array('error'=>true, 'message' => 'Email and userName exists'));
+         exit();
      }
 
-
-
-
+     echo json_encode(array('error'=>false,'href' => 'Login'));
+        exit();
     }
 
 
